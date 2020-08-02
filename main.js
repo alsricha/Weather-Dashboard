@@ -112,3 +112,32 @@ function createCityList(citySearchList) {
               $("#forecast-date" + forecastPosition).append(
                 forecastDate.text(nowMoment.add(1, "days").format("M/D/YYYY"))
               );
+
+              var forecastIcon = $("<img>");
+              forecastIcon.attr(
+                "src",
+                "https://openweathermap.org/img/w/" +
+                  forecast.list[i].weather[0].icon +
+                  ".png"
+              );
+  
+              $("#forecast-icon" + forecastPosition).empty();
+              $("#forecast-icon" + forecastPosition).append(forecastIcon);
+  
+              console.log(forecast.list[i].weather[0].icon);
+  
+              $("#forecast-temp" + forecastPosition).text(
+                "Temp: " + forecast.list[i].main.temp + " °F"
+              );
+              $("#forecast-humidity" + forecastPosition).text(
+                "Humidity: " + forecast.list[i].main.humidity + "%"
+              );
+  
+              $(".forecast").attr(
+                "style",
+                "background-color:dodgerblue; color:white"
+              );
+            }
+          });
+        });
+      });
