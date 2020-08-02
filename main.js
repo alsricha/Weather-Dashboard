@@ -1,4 +1,3 @@
-$(document).ready() {
 
 
 
@@ -35,6 +34,4 @@ $(document).ready() {
 
 
 
-
-    
 }

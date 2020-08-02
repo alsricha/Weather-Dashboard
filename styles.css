@@ -1,23 +1,44 @@
-/* Header */
-
-.navbar-brand {
-    font-size: 36px;
-}
-
-/*Search Header */
-
-.search-header {
-    font-size: 24px;
+body {
+    font-family: "Open Sans", sans-serif;
+  }
+  
+  .heading {
+    background-color: #3c3c3c;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  input {
+    width: 75%;
+  }
+  
+  #city-list {
+    width: 22rem;
+  }
+  
+  #city-date-icon,
+  #city-name,
+  #current-icon {
+      display: flex;
+      flex-direction: row;
+      justify-content: center/space-around/space-between;
+  }
+  
+  h6 {
     font-weight: bold;
-}
-
-/* Cities List */
-
-.city-name {
-    font-size: 30px;
-}
-/* Forecast Date */
-
-.forecast-date {
-    font-size: 18px;
-}
+  }
+  
+  h4 {
+      margin: 5px;
+  }
+  
+  #forecast-cards {
+      display: flex;
+      flex-direction: row;
+      justify-content: center/space-between;
+  }
+  
+  .forecast {
+      margin: 10px;
+  }
