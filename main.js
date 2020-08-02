@@ -37,7 +37,10 @@ function createCityList(citySearchList) {
         url: queryURL,
         method: "GET"
       })
-
+        // Store all of the retrieved data inside of an object called "weather"
+        .then(function(weather) {
+        // Log the queryURL
+        console.log(queryURL);
 
 
 
