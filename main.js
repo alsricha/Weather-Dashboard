@@ -33,7 +33,10 @@ function createCityList(citySearchList) {
   
     var longitude;
 
-
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
 
 
 
