@@ -141,3 +141,27 @@ function createCityList(citySearchList) {
           });
         });
       });
+
+
+      $(document).ready(function() {
+        var citySearchListStringified = localStorage.getItem("citySearchList");
+      
+        var citySearchList = JSON.parse(citySearchListStringified);
+      
+        if (citySearchList == null) {
+          citySearchList = {};
+        }
+      
+        createCityList(citySearchList);
+      
+        $("#current-weather").hide();
+        $("#forecast-weather").hide();
+      
+      
+      
+        $("#search-button").on("click", function(event) {
+          event.preventDefault();
+          var city = $("#city-input")
+            .val()
+            .trim()
+            .toLowerCase();
