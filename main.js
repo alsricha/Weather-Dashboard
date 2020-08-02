@@ -17,7 +17,7 @@ function createCityList(citySearchList) {
       $("#city-list").append(cityListEntry);
     }
   }
-
+  
   function populateCityWeather(city, citySearchList) {
     createCityList(citySearchList);
   
@@ -32,20 +32,21 @@ function createCityList(citySearchList) {
     var latitude;
   
     var longitude;
-
+  
     $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        // Store all of the retrieved data inside of an object called "weather"
-        .then(function(weather) {
+      url: queryURL,
+      method: "GET"
+    })
+      // Store all of the retrieved data inside of an object called "weather"
+      .then(function(weather) {
         // Log the queryURL
         console.log(queryURL);
-
+  
         // Log the resulting object
         console.log(weather);
   
         var nowMoment = moment();
+  
         var displayMoment = $("<h3>");
         $("#city-name").empty();
         $("#city-name").append(
@@ -54,7 +55,7 @@ function createCityList(citySearchList) {
   
         var cityName = $("<h3>").text(weather.name);
         $("#city-name").prepend(cityName);
-
+  
         var weatherIcon = $("<img>");
         weatherIcon.attr(
           "src",
@@ -69,7 +70,7 @@ function createCityList(citySearchList) {
   
         latitude = weather.coord.lat;
         longitude = weather.coord.lon;
-            
+  
         var queryURL3 =
           "https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid=154989ced166a2e18e091941a4f57dfc&q=" +
           "&lat=" +
@@ -90,7 +91,7 @@ function createCityList(citySearchList) {
           $("#current-uv").text("UV Index: ");
           $("#current-uv").append(uvIndexDisplay.text(uvIndex[0].value));
           console.log(uvIndex[0].value);
-
+  
           $.ajax({
             url: queryURL2,
             method: "GET"
@@ -112,7 +113,7 @@ function createCityList(citySearchList) {
               $("#forecast-date" + forecastPosition).append(
                 forecastDate.text(nowMoment.add(1, "days").format("M/D/YYYY"))
               );
-
+  
               var forecastIcon = $("<img>");
               forecastIcon.attr(
                 "src",
@@ -141,27 +142,53 @@ function createCityList(citySearchList) {
           });
         });
       });
-
-
-      $(document).ready(function() {
-        var citySearchListStringified = localStorage.getItem("citySearchList");
+  }
+  
+  $(document).ready(function() {
+    var citySearchListStringified = localStorage.getItem("citySearchList");
+  
+    var citySearchList = JSON.parse(citySearchListStringified);
+  
+    if (citySearchList == null) {
+      citySearchList = {};
+    }
+  
+    createCityList(citySearchList);
+  
+    $("#current-weather").hide();
+    $("#forecast-weather").hide();
+  
+  
+  
+    $("#search-button").on("click", function(event) {
+      event.preventDefault();
+      var city = $("#city-input")
+        .val()
+        .trim()
+        .toLowerCase();
+  
+      if (city != "") {
+        //Check to see if there is any text entered
       
-        var citySearchList = JSON.parse(citySearchListStringified);
+        citySearchList[city] = true;
+      localStorage.setItem("citySearchList", JSON.stringify(citySearchList));
+  
+      populateCityWeather(city, citySearchList);
+  
+      $("#current-weather").show();
+      $("#forecast-weather").show();
+      }
+  
       
-        if (citySearchList == null) {
-          citySearchList = {};
-        }
-      
-        createCityList(citySearchList);
-      
-        $("#current-weather").hide();
-        $("#forecast-weather").hide();
-      
-      
-      
-        $("#search-button").on("click", function(event) {
-          event.preventDefault();
-          var city = $("#city-input")
-            .val()
-            .trim()
-            .toLowerCase();
+    });
+  
+    $("#city-list").on("click", "button", function(event) {
+      event.preventDefault();
+      var city = $(this).text();
+  
+      populateCityWeather(city, citySearchList);
+  
+      $("#current-weather").show();
+      $("#forecast-weather").show();
+    });
+  });
