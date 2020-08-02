@@ -69,4 +69,24 @@ function createCityList(citySearchList) {
   
         latitude = weather.coord.lat;
         longitude = weather.coord.lon;
+            
+        var queryURL3 =
+          "https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid=154989ced166a2e18e091941a4f57dfc&q=" +
+          "&lat=" +
+          latitude +
+          "&lon=" +
+          longitude;
   
+        $.ajax({
+          url: queryURL3,
+          method: "GET"
+          // Store all of the retrieved data inside of an object called "uvIndex"
+        }).then(function(uvIndex) {
+          console.log(uvIndex);
+  
+          var uvIndexDisplay = $("<button>");
+          uvIndexDisplay.addClass("btn btn-danger");
+  
+          $("#current-uv").text("UV Index: ");
+          $("#current-uv").append(uvIndexDisplay.text(uvIndex[0].value));
+          console.log(uvIndex[0].value);
