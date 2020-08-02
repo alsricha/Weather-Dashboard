@@ -12,4 +12,5 @@ Intention
 
 Links
 
-* Deployed Link: 
+* Deployed Link: https://alsricha.github.io/wk6-homework/
+* Link to Repo: https://github.com/alsricha/wk6-homework
