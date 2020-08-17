@@ -18,5 +18,5 @@ An opportunity for improvement would be to add an option to clear the search res
 
 # Links
 
-* Deployed Link: https://alsricha.github.io/wk6-homework/
+* Deployed Link: https://alsricha.github.io/Weather-Dashboard/
 
