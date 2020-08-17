@@ -10,6 +10,8 @@ Intention
 
 Build my first application using an API and retrieve data from a third-party weather applicaiton (OpenWeather API) using their API to pull in information of a city current and 5 day forecast.  In order to retrieve all the information needed, a good deal of mainpulation of the response from the GET request was needed, including taking information from one response to generate a new request. 
 
+In order to display dates on the current conditions and forecasts, the timestamp returend by the Open Weather Map response is converted into a Date, then the "getdate", "getMonth", and "getFullYear" methods are used to generate the date strings displayed on the page
+
 Links
 
 * Deployed Link: https://alsricha.github.io/wk6-homework/
