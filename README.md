@@ -8,7 +8,7 @@ As a user who checks the weather everyday, I want to open up an application sear
 
 Intention
 
-* Build my first application using an API and retrieve data from a third-party weather applicaiton (OpenWeather API) using their API to pull in information of a city current and 5 day forecast. 
+Build my first application using an API and retrieve data from a third-party weather applicaiton (OpenWeather API) using their API to pull in information of a city current and 5 day forecast.  In order to retrieve all the information needed, a good deal of mainpulation of the response from the GET request was needed, including taking information from one response to generate a new request. 
 
 Links
 
